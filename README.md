@@ -2,7 +2,11 @@
 Resources and notes for Offensive Security's SOC-200 course and OffSec Defense Analyst (OSDA) exam
 
 ## Introduction to SOC-200
+- Growth mindset:
+> ...a defender with a growth mindset can adapt to previously-unseen approaches and improve their skills to match that of more-advanced attackers.
 
+> Since skilled adversaries adapt a growth mindset, we must follow suit. There are many practical ways we can do this, but in the next subsections, we will explore a few of them.
+- 
 
 ## Attacker Methodology Introduction
 
