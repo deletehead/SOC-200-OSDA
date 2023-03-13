@@ -48,7 +48,7 @@ function Get-SecurityEvent {
     Get-WinEvent -FilterHashtable $filters
 }
 
- # Get-SecurityEvent 4625 "5/6/2021 00:00:00" "5/7/2021 00:00:00"
+# Get-SecurityEvent 4625 "5/6/2021 00:00:00" "5/7/2021 00:00:00"
 function Get-FailedLogonEvent {
     param (
         $start,
@@ -67,4 +67,11 @@ function Get-FailedLogonEvent {
         $filters.EndTime = $end
     }
     Get-WinEvent -FilterHashtable $filters
+    
+    ### EXAMPLE: Use Get-FailedLogonEvent and filter the output into a nice readable table:
+    ##  Get-FailedLogonEvent "3/13/2023 15:15:00" "3/13/2023 15:15:01" | 
+    #     Format-List  TimeCreated, @{Label = "Logon Type"; Expression = {$_.properties[10].value}}, @{Label = "Status"; Expression = {'{0:X8}' -f $_.properties[7].value}}, 
+    #     @{Label = "Substatus"; Expression = {'{0:X8}' -f $_.properties[9].value}}, @{Label = "Target User Name"; Expression = {$_.properties[5].value}}, 
+    #     @{Label = "Workstation Name"; Expression = {$_.properties[13].value}}, @{Label = "IP Address"; Expression = {$_.properties[19].value}} 
 } 
+
