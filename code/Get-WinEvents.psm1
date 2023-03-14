@@ -15,11 +15,9 @@ function Get-SysmonEvent {
     if ($eventid -ne $null) {
         $filters.ID = $eventid
     }
-    
     if ($start -ne $null) {
         $filters.StartTime = $start
     }
-
     if ($end -ne $null) {
         $filters.EndTime = $end
     }
@@ -41,7 +39,6 @@ function Get-SecurityEvent {
     if ($start -ne $null) {
         $filters.StartTime = $start
     }
-
     if ($end -ne $null) {
         $filters.EndTime = $end
     }
@@ -62,7 +59,6 @@ function Get-FailedLogonEvent {
     if ($start -ne $null) {
         $filters.StartTime = $start
     }
-
     if ($end -ne $null) {
         $filters.EndTime = $end
     }
@@ -75,3 +71,23 @@ function Get-FailedLogonEvent {
     #     @{Label = "Workstation Name"; Expression = {$_.properties[13].value}}, @{Label = "IP Address"; Expression = {$_.properties[19].value}} 
 } 
 
+function Get-PSLogEvent{
+    param (
+        $eventid,
+        $start,
+        $end
+    )
+    $filters = @{LogName = "Microsoft-Windows-PowerShell/Operational"}
+    
+    if ($eventid -ne $null) {
+        $filters.ID = $eventid
+    }
+    if ($start -ne $null) {
+        $filters.StartTime = $start
+    }
+    if ($end -ne $null) {
+        $filters.EndTime = $end
+    }
+
+    Get-WinEvent -FilterHashtable $filters
+}
