@@ -5,6 +5,14 @@
 
 # Get date to query (current time)
 function Get-Now {
+    param (
+        $seconds
+    )
+    
+    if ($seconds -e $null) {
+        $seconds = 10
+    }
+    
     $d      = Get-Date
     $dEnd   = '{0:yyyy/MM/dd HH:mm:ss}' -f $d
     $dStart = '{0:yyyy/MM/dd HH:mm:ss}' -f $d.AddSeconds(-10)
