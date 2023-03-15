@@ -3,21 +3,22 @@
 # - REMEMBER: Use a 24-hour clock when specifying times. Gets me every time.
 ###
 
-# Get date to query (current time)
-function Get-Now {
+# Get date to query, current time - $seconds
+function Get-LogTStamp {
     param (
         $seconds
     )
     
-    if ($seconds -e $null) {
+    if ($seconds -eq $null) {
         $seconds = 10
     }
     
     $d      = Get-Date
     $dEnd   = '{0:yyyy/MM/dd HH:mm:ss}' -f $d
-    $dStart = '{0:yyyy/MM/dd HH:mm:ss}' -f $d.AddSeconds(-10)
+    $dStart = '{0:yyyy/MM/dd HH:mm:ss}' -f $d.AddSeconds(-$seconds)
     Write-Host `"$dStart`" `"$dEnd`"
-}
+} 
+
 
 # Get a Sysmon event with a specific ID and time
 function Get-SysmonEvent {
