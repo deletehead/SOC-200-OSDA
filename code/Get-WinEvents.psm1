@@ -5,7 +5,10 @@
 
 # Get date to query (current time)
 function Get-Now {
-    get-date -Format "MM/dd/yyyy HH:mm:ss"
+    $d      = Get-Date
+    $dEnd   = '{0:yyyyMMdd HH:mm:ss}' -f $d
+    $dStart = '{0:yyyyMMdd HH:mm:ss}' -f $dEnd.AddSeconds(-10)
+    Write-Host $dStart $dEnd
 }
 
 # Get a Sysmon event with a specific ID and time
