@@ -3,6 +3,11 @@
 # - REMEMBER: Use a 24-hour clock when specifying times. Gets me every time.
 ###
 
+# Get date to query (current time)
+function Get-Now {
+    get-date -Format "MM/dd/yyyy HH:mm:ss"
+}
+
 # Get a Sysmon event with a specific ID and time
 function Get-SysmonEvent {
     param (
