@@ -7,7 +7,7 @@
 function Get-Now {
     $d      = Get-Date
     $dEnd   = '{0:yyyyMMdd HH:mm:ss}' -f $d
-    $dStart = '{0:yyyyMMdd HH:mm:ss}' -f $dEnd.AddSeconds(-10)
+    $dStart = '{0:yyyyMMdd HH:mm:ss}' -f $d.AddSeconds(-10)
     Write-Host $dStart $dEnd
 }
 
