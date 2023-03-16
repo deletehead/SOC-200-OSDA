@@ -14,8 +14,8 @@ function Get-LogTStamp {
     }
     
     $d      = Get-Date
-    $dEnd   = '{0:yyyy/MM/dd HH:mm:ss}' -f $d
-    $dStart = '{0:yyyy/MM/dd HH:mm:ss}' -f $d.AddSeconds(-$seconds)
+    $dEnd   = '{0:MM/dd/yyyy HH:mm:ss}' -f $d
+    $dStart = '{0:MM/dd/yyyy HH:mm:ss}' -f $d.AddSeconds(-$seconds)
     $out =  "`"$dStart`" `"$dEnd`""
     return $out.ToString()
 }
