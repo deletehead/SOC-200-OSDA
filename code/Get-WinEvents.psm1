@@ -1,9 +1,9 @@
-###
+ ###
 # Notes:
 # - REMEMBER: Use a 24-hour clock when specifying times. Gets me every time.
 ###
 
-# Get date to query, current time - $seconds
+# Get date to query (current time)
 function Get-LogTStamp {
     param (
         $seconds
@@ -16,9 +16,9 @@ function Get-LogTStamp {
     $d      = Get-Date
     $dEnd   = '{0:yyyy/MM/dd HH:mm:ss}' -f $d
     $dStart = '{0:yyyy/MM/dd HH:mm:ss}' -f $d.AddSeconds(-$seconds)
-    Write-Host `"$dStart`" `"$dEnd`"
-} 
-
+    $out =  "`"$dStart`" `"$dEnd`""
+    return $out.ToString()
+}
 
 # Get a Sysmon event with a specific ID and time
 function Get-SysmonEvent {
@@ -39,6 +39,21 @@ function Get-SysmonEvent {
         $filters.EndTime = $end
     }
     Get-WinEvent -FilterHashtable $filters
+}
+
+# Run Get-SysmonEvent (Time - $seconds)
+function Get-SysmonEventT {
+    param (
+        $seconds
+    )
+
+    if ($seconds -eq $null) {
+        $seconds = 10
+    }
+    $times = Get-LogTStamp $seconds
+    $cmd = "Get-SysmonEvent `$null " + $times
+    write-host "[*] Running: $cmd"
+    IEX $cmd
 }
 
 # Get a Security event with a specific ID and time
@@ -107,4 +122,4 @@ function Get-PSLogEvent{
     }
 
     Get-WinEvent -FilterHashtable $filters
-}
+} 
