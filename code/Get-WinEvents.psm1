@@ -77,6 +77,21 @@ function Get-SecurityEvent {
     Get-WinEvent -FilterHashtable $filters
 }
 
+# Run Get-SecurityEvent (Time - $seconds)
+function Get-SecurityEventT {
+    param (
+        $seconds
+    )
+
+    if ($seconds -eq $null) {
+        $seconds = 10
+    }
+    $times = Get-LogTStamp $seconds
+    $cmd = "Get-SecurityEvent `$null " + $times
+    write-host "[*] Running: $cmd"
+    IEX $cmd
+}
+
 # Get-SecurityEvent 4625 "5/6/2021 00:00:00" "5/7/2021 00:00:00"
 function Get-FailedLogonEvent {
     param (
@@ -103,6 +118,21 @@ function Get-FailedLogonEvent {
     #     @{Label = "Workstation Name"; Expression = {$_.properties[13].value}}, @{Label = "IP Address"; Expression = {$_.properties[19].value}} 
 } 
 
+# Run Get-FailedLogonEvent (Time - $seconds)
+function Get-FailedLogonEventT {
+    param (
+        $seconds
+    )
+
+    if ($seconds -eq $null) {
+        $seconds = 10
+    }
+    $times = Get-LogTStamp $seconds
+    $cmd = "Get-FailedLogonEvent `$null " + $times
+    write-host "[*] Running: $cmd"
+    IEX $cmd
+}
+
 function Get-PSLogEvent{
     param (
         $eventid,
@@ -122,4 +152,8 @@ function Get-PSLogEvent{
     }
 
     Get-WinEvent -FilterHashtable $filters
-} 
+}
+
+# Run Get-PSLogEvent (Time - $seconds)
+#   function Get-PSLogEventT { ... } 
+#   This one failed.
