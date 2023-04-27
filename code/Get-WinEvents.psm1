@@ -154,6 +154,28 @@ function Get-PSLogEvent{
     Get-WinEvent -FilterHashtable $filters
 }
 
+function Get-WDLogEvent {
+    param (
+        $eventid,
+        $start,
+        $end
+    )
+    $filters = @{LogName = "Microsoft-Windows-Windows Defender/Operational"}
+
+    if ($eventid -ne $null) {
+        $filters.ID = $eventid
+    }
+    if ($start -ne $null) {
+        $filters.StartTime = $start
+    }
+
+    if ($end -ne $null) {
+        $filters.EndTime = $end
+    }
+
+    Get-WinEvent -FilterHashtable $filters
+}
+
 # Run Get-PSLogEvent (Time - $seconds)
 #   function Get-PSLogEventT { ... } 
 #   This one failed.
