@@ -16,6 +16,10 @@ host.hostname: "appsrv01" and data_stream.dataset: "windows.sysmon_operational" 
 ```
 tags: "snort.log" and network.type: "ipv4"
 ```
+- OSQuery generic:
+```
+SELECT field1, field2, fieldx FROM table1 WHERE field1 = value1 AND field2 like '%value2%';
+```
 
 ## Initial Access
 
