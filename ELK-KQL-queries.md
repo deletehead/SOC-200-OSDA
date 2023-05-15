@@ -20,6 +20,10 @@ tags: "snort.log" and network.type: "ipv4"
 ```
 SELECT field1, field2, fieldx FROM table1 WHERE field1 = value1 AND field2 like '%value2%';
 ```
+- OSQuery example:
+```
+select directory, filename from file where path like 'C:\Users\%\Desktop\%' and filename like '%.txt';
+```
 
 ## Initial Access
 
