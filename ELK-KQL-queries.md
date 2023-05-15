@@ -13,3 +13,10 @@ host.hostname: "appsrv01" and data_stream.dataset : "windows.sysmon_operational"
 "apache-access" and host.hostname: "web01" and not source.ip: 127.0.0.1
 ```
 
+## Initial Access
+
+## Privilege Escalation
+
+## Persistence
+
+## Lateral Movement
