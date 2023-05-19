@@ -26,6 +26,21 @@ select directory, filename from file where path like 'C:\Users\%\Desktop\%' and 
 ```
 
 ## Initial Access
+### Web Attacks
+- SQL injection:
+
+- LFI/RFI:
+
+- Command injection:
+
+- Malicious file upload:
+
+### Credential Attacks
+- SSH:
+```
+## SSH login success; select "user.name". Observer stats on source IP.
+event.action:"ssh_login" and event.outcome:success
+```
 
 ## Privilege Escalation
 
